@@ -23,13 +23,13 @@ Se usa en los joins cuando el campo de comparación o union tiene el mismo nombr
 ```sql
 SELECT field1, field2, field3
 FROM table1 AS t1
-  INNER JOIN table2 AS t2 ON t1.field_code = t2.field_code;
+    INNER JOIN table2 AS t2 ON t1.field_code = t2.field_code;
 
 -- Se podría escribir como:
 
 SELECT field1, field2, field3
 FROM table1 AS t1
-  INNER JOIN table2 AS t2 USING(field_code);
+    INNER JOIN table2 AS t2 USING(field_code);
 ```
 
 Ya que el campo de comparación se llama igual en ambas tablas.

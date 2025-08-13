@@ -111,3 +111,58 @@ El reset es una operación de Git que permite deshacer commits y mover el punter
 - Se usa cuando se quiere deshacer cambios recientes en una rama.
 - Se recomienda para proyectos grandes con muchos commits, ya que hace que sea más fácil deshacer cambios recientes.
 - NO se recomienda para proyectos pequeños o con pocos commits, ya que puede ser innecesario.
+
+# Worktree
+El worktree es una característica de Git que permite tener múltiples directorios de trabajo para un mismo repositorio. Esto es útil para trabajar en múltiples ramas al mismo tiempo sin tener que cambiar constantemente entre ellas.
+```bash
+  git worktree add <path> <branch> # Crea un nuevo directorio de trabajo para la rama especificada.
+  git worktree list # Muestra una lista de todos los directorios de trabajo asociados con el repositorio.
+  git worktree remove <path> # Elimina un directorio de trabajo.
+```
+- Es ideal para trabajar en múltiples ramas al mismo tiempo.
+- Se usa cuando se quiere evitar cambiar constantemente entre ramas.
+
+# Submodules
+Los submódulos son una característica de Git que permite incluir un repositorio dentro de otro repositorio. Esto es útil para gestionar dependencias o bibliotecas externas que se utilizan en un proyecto.
+```bash
+  git submodule add <repository-url> <path> # Agrega un submódulo al repositorio.
+  git submodule init # Inicializa los submódulos en el repositorio.
+  git submodule update # Actualiza los submódulos a la última versión.
+  git submodule status # Muestra el estado de los submódulos.
+  git submodule deinit <path> # Elimina un submódulo del repositorio.
+  git submodule rm <path> # Elimina un submódulo del repositorio y lo elimina del índice.
+```
+- Es ideal para gestionar dependencias o bibliotecas externas en un proyecto.
+- Se usa cuando se quiere incluir un repositorio dentro de otro repositorio.
+
+# Large File Storage (LFS)
+Git Large File Storage (LFS) es una extensión de Git que permite gestionar archivos grandes de manera más eficiente. En lugar de almacenar los archivos grandes directamente en el repositorio, Git LFS almacena un puntero a los archivos grandes y los gestiona de manera separada. Esto reduce el tamaño del repositorio y mejora el rendimiento al trabajar con archivos grandes.
+```bash
+  git lfs install # Instala Git LFS en el repositorio.
+  git lfs track <file-pattern> # Configura Git LFS para rastrear archivos grandes.
+  git add .gitattributes # Agrega el archivo de configuración de Git LFS.
+  git add <file> # Agrega un archivo grande al repositorio.
+  git commit -m "Add large file" # Realiza un commit con el archivo grande.
+  git push # Envía los cambios al repositorio remoto.
+  git lfs ls-files # Muestra una lista de archivos grandes rastreados por Git LFS.
+  git lfs pull # Descarga los archivos grandes rastreados por Git LFS.
+  git lfs push # Envía los archivos grandes rastreados por Git LFS.
+```
+- Es ideal para gestionar archivos grandes en un repositorio.
+- Se usa cuando se quiere reducir el tamaño del repositorio y mejorar el rendimiento al trabajar con
+
+# Trunk Based Development (TBD)
+Es una práctica de desarrollo en la que todos los desarrolladores trabajan en una única rama principal (trunk) y realizan commits frecuentes. Esto fomenta un flujo de trabajo ágil y reduce la complejidad de los merges.
+```bash
+  git checkout main # Cambia a la rama principal.
+  git pull # Actualiza la rama principal con los últimos cambios.
+  git checkout -b feature-branch # Crea una nueva rama para una característica.
+  # Realiza cambios y commits en la rama de características.
+  git checkout main # Vuelve a la rama principal.
+  git merge feature-branch # Combina los cambios de la rama de características en la rama principal.
+```
+- Es ideal para equipos que trabajan en un flujo de trabajo ágil y necesitan realizar commits frecuentes.
+- Se usa cuando se quiere reducir la complejidad de los merges y mantener un flujo de trabajo ágil.
+- Se recomienda para equipos pequeños o medianos que trabajan en un proyecto de manera colaborativa.
+- NO se recomienda para equipos grandes o proyectos complejos, ya que puede ser difícil coordinar los cambios y resolver conflictos.
+- Se debe tener cuidado al hacer merges frecuentes, ya que puede ser difícil mantener un historial limpio y lineal si no se gestionan adecuadamente los commits.
